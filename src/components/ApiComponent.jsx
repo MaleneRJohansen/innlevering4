@@ -22,12 +22,22 @@ function ApiComponent() {
         fetchData()
     }, [])
 
+    const amazonURL = (amazonID) => {
+        return `https://www.amazon.com/s?k=${amazonID}`
+    }
+
     return (
         <div>
             <h1>James Bond Bøker</h1>
             <div className='book-list'>
                 {books.map((book, index) => (
-                    <h2 key={index}>{book.title}</h2>
+                    <div key={index}>
+                        <h2>{book.title}</h2>
+                        <p>Forfatter: {book.author_name && book.author_name.join(', ')}</p>
+                        <p>Gjennomsnittlig rating: {book.ratings_average}</p>
+                        <p>Publiseringsår: {book.first_publish_year}</p>
+                        <a href={amazonURL(book.amazon_id)} target="_blank" rel="noopener noreferrer">Kjøp på Amazon</a>
+                    </div>
                 ))}
             </div>
         </div>
