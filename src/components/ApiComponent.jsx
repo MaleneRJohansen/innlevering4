@@ -25,11 +25,11 @@ function ApiComponent() {
     return (
         <div>
             <h1>James Bond Bøker</h1>
-            <ul>
+            <div className='book-list'>
                 {books.map((book, index) => (
-                    <li key={index}>{book.title}</li>
+                    <h2 key={index}>{book.title}</h2>
                 ))}
-            </ul>
+            </div>
         </div>
     );
 }
