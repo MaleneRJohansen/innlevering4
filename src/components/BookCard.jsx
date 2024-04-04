@@ -4,10 +4,10 @@ import React from 'react'
 const BookCard = () => {
   return (
     <>
-    <h2>Tittel:</h2>
-    <p>Forfatter:</p>
-    <p>Første utgivelse:</p>
-    <p>Gjennomsnittlig anmeldelse:</p>
+    <h2>Title:</h2>
+    <p>Author:</p>
+    <p>Published:</p>
+    <p>Rating:</p>
     <a href=''>Amazon</a>
     </>
   )
