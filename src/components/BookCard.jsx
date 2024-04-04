@@ -1,14 +1,15 @@
 import React from 'react'
-//https://openlibrary.org/search.json?title=the+lord+of+the+rings
 
-const BookCard = () => {
+const BookCard = ({book, amazonURL}) => {
   return (
     <>
-    <h2>Title:</h2>
-    <p>Author:</p>
-    <p>Published:</p>
-    <p>Rating:</p>
-    <a href=''>Amazon</a>
+    <div>
+        <h2>{book.title}</h2>
+        <p>Forfatter: {book.author_name && book.author_name.join(', ')}</p>
+        <p>Rating: {book.ratings_average}</p>
+        <p>Publiseringsår: {book.first_publish_year}</p>
+        <a href={amazonURL(book.amazon_id)} target='_blank' rel='noopener noreferrer'>Kjøp på Amazon</a>
+    </div>
     </>
   )
 }

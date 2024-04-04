@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import BookCard from './BookCard'
 
 function ApiComponent() {
     const [books, setBooks] = useState([])
@@ -28,16 +29,9 @@ function ApiComponent() {
 
     return (
         <div>
-            <h1>James Bond Bøker</h1>
             <div className='book-list'>
                 {books.map((book, index) => (
-                    <div key={index}>
-                        <h2>{book.title}</h2>
-                        <p>Forfatter: {book.author_name && book.author_name.join(', ')}</p>
-                        <p>Gjennomsnittlig rating: {book.ratings_average}</p>
-                        <p>Publiseringsår: {book.first_publish_year}</p>
-                        <a href={amazonURL(book.amazon_id)} target="_blank" rel="noopener noreferrer">Kjøp på Amazon</a>
-                    </div>
+                    <BookCard key={index} book={book} amazonURL={amazonURL} />
                 ))}
             </div>
         </div>
