@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import BookCard from './BookCard'
 import SearchBar from './SearchBar'
 
-//ChatGPT ga en generell kode for API-fetching. Resten er fyllt inn av megselv.
 function ApiComponent() {
     const [books, setBooks] = useState([])
     const [searchQuery, setSearchQuery] = useState('')
@@ -12,7 +11,7 @@ function ApiComponent() {
         if (searchQuery.length >= 3) {
             const fetchBooks = async () => {
                 try {
-                    const response = await fetch('https://openlibrary.org/search.json?title=james+bond')
+                    const response = await fetch(`https://openlibrary.org/search.json?title=${encodeURIComponent(searchQuery)}`)
                     if (response.ok) {
                         const jsonData = await response.json()
                         setBooks(jsonData.docs)
@@ -23,9 +22,10 @@ function ApiComponent() {
                     console.error('En feil oppstod under henting av bøker:', error)
                 }
             }
-        }
+            
             fetchBooks()
-    }, [])
+        }
+    }, [searchQuery])
 
     const amazonURL = (amazonID) => {
         return `https://www.amazon.com/s?k=${amazonID}`
@@ -33,18 +33,6 @@ function ApiComponent() {
 
     const handleSearch = async (query) => {
         setSearchQuery(query)
-        try {
-            const response = await fetch(`fetch('https://openlibrary.org/search.json?title=${encodeURIComponent(query)}')`)
-            if (response.ok) {
-                const jsonData = await response.json()
-                setBooks(jsonData.docs)
-            } else {
-                console.error('Feil ved søk etter bøker:', response.status)
-            }
-        } catch (error) {
-            console.error('En feil oppstod under søket etter bøker:', error)
-            }
-        }
     }
 
     return (
@@ -59,5 +47,6 @@ function ApiComponent() {
             </div>
         </div>
     );
+}
 
 export default ApiComponent
