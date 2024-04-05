@@ -8,6 +8,7 @@ function ApiComponent() {
     const URL = 'https://openlibrary.org/search.json?title='
 
     useEffect(() => {
+        //Spurte chatGPT om en generell fetch fra et api, og tok det derfra med å fylle inn relevant info fra oppgitt API
         const fetchJamesBondBooks = async () => {
             try {
                 const response = await fetch(`https://openlibrary.org/search.json?title=james+bond`)

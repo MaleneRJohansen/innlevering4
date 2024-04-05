@@ -1,5 +1,6 @@
 import React from 'react'
 import BookCard from './BookCard'
+import './sass/SearchResults.scss'
 
 const SearchResults = ({ books, amazonURL }) => {
   return (

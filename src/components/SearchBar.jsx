@@ -14,7 +14,7 @@ const SearchBar = ({handleSearch}) => {
     }
 
   return (
-    <div>
+    <div className='search-bar'>
         <input className='input' type='text' placeholder='Search titles...' value={searchQuery} onChange={handleInputChange} />
         <button className='button' onClick={handleSearchClick}><IoSearch/>Search</button>
     </div>
