@@ -8,6 +8,24 @@ function ApiComponent() {
     const URL = 'https://openlibrary.org/search.json?title='
 
     useEffect(() => {
+        const fetchJamesBondBooks = async () => {
+            try {
+                const response = await fetch(`https://openlibrary.org/search.json?title=james+bond`)
+                if (response.ok) {
+                    const jsonData = await response.json()
+                    setBooks(jsonData.docs)
+                } else {
+                    console.error('Feil ved henting av James Bond-bøker:', response.status)
+                }
+            } catch (error) {
+                console.error('En feil oppstod under henting av James Bond-bøker:', error)
+            }
+        }
+
+        fetchJamesBondBooks()
+    }, [])
+
+    useEffect(() => {
         if (searchQuery.length >= 3) {
             const fetchBooks = async () => {
                 try {
